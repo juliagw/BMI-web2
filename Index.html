@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <style>
+        body {
+            background: linear-gradient(to bottom, #3498db, #2980b9); /* Linear gradient background */
+            font-family: Arial, sans-serif;
+            color: #fff;
+            text-align: center;
+        }
+
+        .container {
+            margin-top: 100px;
+        }
+
+        h1 {
+            font-size: 2rem;
+        }
+
+        #bmiResult {
+            font-size: 1.5rem;
+            margin-top: 20px;
+        }
+
+        #bmiButton {
+            padding: 10px 20px;
+            background-color: #27ae60;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>BMI Calculator</h1>
+        <p>Enter your weight (in kilograms) and height (in meters) to calculate your BMI:</p>
+        <form id="bmiForm">
+            <label for="weight">Weight (kg):</label>
+            <input type="number" id="weight" step="0.01" required><br><br>
+            <label for="height">Height (m):</label>
+            <input type="number" id="height" step="0.01" required><br><br>
+            <input type="submit" value="Calculate" id="bmiButton">
+        </form>
+        <div id="bmiResult"></div>
+    </div>
+
+    <script>
+        document.getElementById("bmiForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+            const weight = parseFloat(document.getElementById("weight").value);
+            const height = parseFloat(document.getElementById("height").value);
+            const bmi = weight / (height * height);
+            document.getElementById("bmiResult").textContent = `Your BMI is: ${bmi.toFixed(2)} kg/m²`;
+        });
+    </script>
+</body>
+</html>
